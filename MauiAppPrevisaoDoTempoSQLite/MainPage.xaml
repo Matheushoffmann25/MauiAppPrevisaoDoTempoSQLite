@@ -1,0 +1,51 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppPrevisaoDoTempoSQLite.MainPage"
+             BackgroundColor="#f0f0f5"
+             Title="Previsão do Tempo">
+
+    <VerticalStackLayout Padding="20">
+        <Label Text="Previsão do Tempo" 
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Start"
+               TextColor="#007acc"/>
+
+        <Entry x:Name="cidadeEntry"
+               Placeholder="Digite a cidade"
+               FontSize="18"
+               Margin="0,10,0,10"
+               BackgroundColor="White"
+               PlaceholderColor="Gray"
+               TextColor="Black"/>
+
+        <Button Text="Buscar Previsão" 
+                BackgroundColor="#007acc" 
+                TextColor="White" 
+                FontSize="18" 
+                Clicked="OnBuscarPrevisaoClicked"
+                Margin="0,10,0,20"/>
+
+        <ListView x:Name="previsoesListView" SeparatorColor="Gray" HeightRequest="200">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Cidade}" Detail="{Binding Temperatura, StringFormat='{0} - {1}'}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Entry x:Name="dataEntry"
+               Placeholder="Digite uma data (dd/MM/yyyy)"
+               FontSize="18"
+               Margin="0,10,0,10"
+               BackgroundColor="White"
+               PlaceholderColor="Gray"
+               TextColor="Black"/>
+
+        <Button Text="Buscar Previsões por Data" 
+                BackgroundColor="#007acc" 
+                TextColor="White" 
+                FontSize="18" 
+                Clicked="OnBuscarPrevisaoPorDataClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
